@@ -9,20 +9,22 @@ router.get('/', function(req, res, next) {
 router.get('/youtube', (req, res) =>{
   res.render('youtube');
 });
-router.get('/input', (req, res) =>{
-  res.render('input');
+router.get('/login', (req, res) =>{
+  res.render('login');
 });
 //lay data tu form input
-router.post('/output', (req,res) =>{
-  var student = req.body;
-  var age = req.body.tuoi;
-  var name = req.body.ten;
-  var email = req.body.email;
-  var dob = req.body.dob;
-
-  // res.render('output',{sinhvien : student});
-  res.render('output',{age : age,name : name,email : email,dob : dob});
-
+router.post('/check', (req,res) =>{
+  var account = req.body;
+  var username = req.body.username
+  var password = req.body.password
+  if(username =='admin' && password =='admin')
+  {
+    res.send('login success');
+  }
+  else
+  {
+    res.send('false');
+  }
 });
 module.exports = router;
  
